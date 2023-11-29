@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1y6p5"]
 [ext_resource type="Texture2D" uid="uid://dvklk7fttwrda" path="res://Assets/NinjaAdventure/Actor/Characters/Knight/SpriteSheet.png" id="2_pgjrt"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5kd7"]
-radius = 3.0
-height = 10.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dsd0w"]
+size = Vector2(3.5, 14)
 
 [sub_resource type="Animation" id="Animation_uwfpq"]
 resource_name = "IdleDown"
@@ -220,19 +219,21 @@ states/Run/position = Vector2(643, 68)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_4gqqw"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_nbqhe"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_f5x1b")]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_1y6p5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -7)
 texture = ExtResource("2_pgjrt")
+offset = Vector2(0, -8)
 hframes = 4
 vframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(-5.96046e-07, -2.25)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_u5kd7")
+shape = SubResource("RectangleShape2D_dsd0w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
