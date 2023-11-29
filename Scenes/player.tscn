@@ -221,6 +221,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_1y6p5")
 

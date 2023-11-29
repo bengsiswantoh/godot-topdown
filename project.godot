@@ -23,6 +23,14 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="PlayerHurtBox"
+2d_physics/layer_4="EnemyHurtBox"
+2d_physics/layer_5="Enemy"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
