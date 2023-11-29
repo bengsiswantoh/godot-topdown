@@ -228,7 +228,6 @@ position = Vector2(0, -7)
 texture = ExtResource("2_pgjrt")
 hframes = 4
 vframes = 7
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -244,5 +243,5 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_h1ckk")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/Idle/blend_position = Vector2(-0.0368, -0.321834)
+parameters/Idle/blend_position = Vector2(0, 1)
 parameters/Run/blend_position = Vector2(0, 0)
