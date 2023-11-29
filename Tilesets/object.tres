@@ -416,5 +416,5 @@ physics_layer_0/collision_mask = 18
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "desert_inner"
 terrain_set_0/terrain_0/color = Color(0.701961, 0.266667, 0.776471, 1)
-sources/0 = SubResource("TileSetAtlasSource_j3v2k")
-sources/1 = SubResource("TileSetAtlasSource_b075g")
+sources/2 = SubResource("TileSetAtlasSource_b075g")
+sources/1 = SubResource("TileSetAtlasSource_j3v2k")
