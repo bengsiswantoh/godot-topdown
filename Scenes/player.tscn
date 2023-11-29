@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cvm0xft75w16x"]
+[gd_scene load_steps=27 format=3 uid="uid://cvm0xft75w16x"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1y6p5"]
 [ext_resource type="Texture2D" uid="uid://dvklk7fttwrda" path="res://Assets/NinjaAdventure/Actor/Characters/Knight/SpriteSheet.png" id="2_pgjrt"]
@@ -171,11 +171,13 @@ animation = &"IdleRight"
 blend_point_0/node = SubResource("AnimationNodeAnimation_ses8o")
 blend_point_0/pos = Vector2(-1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_7rskj")
-blend_point_1/pos = Vector2(0, 1)
+blend_point_1/pos = Vector2(0, 1.1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_kcpi7")
-blend_point_2/pos = Vector2(0, -0.9)
+blend_point_2/pos = Vector2(0, -1.1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_vuqsl")
 blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_axpx3"]
@@ -192,24 +194,30 @@ animation = &"RunRight"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_1s7uj"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_axpx3")
-blend_point_0/pos = Vector2(-1, 0.1)
+blend_point_0/pos = Vector2(-1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_duo3v")
-blend_point_1/pos = Vector2(0, 1)
+blend_point_1/pos = Vector2(0, 1.1)
 blend_point_2/node = SubResource("AnimationNodeAnimation_p1tur")
-blend_point_2/pos = Vector2(0, -0.9)
+blend_point_2/pos = Vector2(0, -1.1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_winsk")
 blend_point_3/pos = Vector2(1, 0)
+min_space = Vector2(-1, -1.1)
+max_space = Vector2(1, 1.1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4gqqw"]
 advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nbqhe"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f5x1b"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_h1ckk"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_3d5st")
 states/Idle/position = Vector2(415, 78)
 states/Run/node = SubResource("AnimationNodeBlendSpace2D_1s7uj")
 states/Run/position = Vector2(643, 68)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_4gqqw")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_4gqqw"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_nbqhe"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_f5x1b")]
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -236,5 +244,5 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_h1ckk")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/Idle/blend_position = Vector2(0, 0)
+parameters/Idle/blend_position = Vector2(-0.0368, -0.321834)
 parameters/Run/blend_position = Vector2(0, 0)
