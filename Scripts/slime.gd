@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-var start_position
-var end_position
-
-func _ready():
-	start_position = position
-	end_position = start_position + Vector2(0, 3 * 16)
-
 func _physics_process(delta):
-	var move_direction = end_position - start_position
-	velocity = move_direction.normalized()
-	move_and_slide()
+	if Input.is_action_just_pressed("ui_accept"):
+		var death_effect_scene = load("res://Scenes/Effects/death_effect.tscn")
+		var death_effect = death_effect_scene.instantiate()
+		
+		death_effect.global_position = global_position
+		
+		var world = get_tree().current_scene
+		
+		world.add_child(death_effect)
+		
+		queue_free()
