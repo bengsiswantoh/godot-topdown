@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://blkixsj0huqmu"]
+[gd_scene load_steps=23 format=3 uid="uid://blkixsj0huqmu"]
 
 [ext_resource type="Texture2D" uid="uid://bl5ihcj827uop" path="res://Assets/NinjaAdventure/Actor/Characters/Monsters/Slime.png" id="1_85872"]
 [ext_resource type="Script" path="res://Scripts/slime.gd" id="1_inp0s"]
+[ext_resource type="PackedScene" uid="uid://vwmt8s7p4uxo" path="res://Scenes/hurt_box.tscn" id="3_ptcab"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ispd"]
 atlas = ExtResource("1_85872")
@@ -138,8 +139,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfa4y"]
-size = Vector2(14, 10)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bkccm"]
+radius = 2.25
+height = 14.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xu1si"]
+size = Vector2(12, 12)
 
 [node name="Slime" type="CharacterBody2D"]
 z_index = 1
@@ -150,9 +155,20 @@ script = ExtResource("1_inp0s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_pei3f")
 animation = &"WalkUp"
-frame = 2
+frame = 1
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_jfa4y")
+position = Vector2(0, -2.25)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bkccm")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_ptcab")]
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_xu1si")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+
+[editable path="HurtBox"]
