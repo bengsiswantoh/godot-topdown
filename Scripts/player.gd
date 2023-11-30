@@ -31,6 +31,7 @@ func move_state(delta):
 	if input_vector:
 		animation_tree.set("parameters/Idle/blend_position", input_vector)
 		animation_tree.set("parameters/Run/blend_position", input_vector)
+		animation_tree.set("parameters/Attack/blend_position", input_vector)
 		animation_state.travel("Run")
 		velocity = velocity.move_toward(input_vector * max_speed, acceleration * delta)
 	else:
@@ -38,6 +39,15 @@ func move_state(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		state = ATTACK
 
 func attack_state(delta):
-	pass
+	velocity = Vector2.ZERO
+	animation_state.travel("Attack")
+	await animation_tree.animation_finished
+	attack_animation_finished()
+
+func attack_animation_finished():
+	state = MOVE
