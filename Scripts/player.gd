@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 @onready var animation_tree = $AnimationTree
 @onready var animation_state = animation_tree.get("parameters/playback")
+@onready var weapon = $Weapon
+
 
 enum {
 	MOVE,
@@ -16,6 +18,7 @@ var state = MOVE
 
 func _ready():
 	animation_tree.active = true
+	weapon.visible = false
 
 func _physics_process(delta):
 	match state:
@@ -46,8 +49,6 @@ func move_state(delta):
 func attack_state(delta):
 	velocity = Vector2.ZERO
 	animation_state.travel("Attack")
-	await animation_tree.animation_finished
-	attack_animation_finished()
 
 func attack_animation_finished():
 	state = MOVE
